@@ -1,11 +1,25 @@
-# Test your FastAPI endpoints
+# Register a new user
+POST http://localhost:8000/account/register
+Content-Type: application/json
 
-GET http://127.0.0.1:8000/
-Accept: application/json
+{
+  "username": "fellowmonster",
+  "password": "test"
+}
 
 ###
 
-GET http://127.0.0.1:8000/hello/User
-Accept: application/json
+# Login and get access token
+POST http://localhost:8000/account/login
+Content-Type: application/json
+
+{
+  "username": "fellowmonster",
+  "password": "test"
+}
 
 ###
+
+# Access a protected endpoint using the access token
+GET http://localhost:8000/account/token
+Authorization: Bearer <access_token>
